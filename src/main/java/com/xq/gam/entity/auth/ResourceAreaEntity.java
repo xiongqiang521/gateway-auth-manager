@@ -26,6 +26,7 @@ public class ResourceAreaEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private StrategyType strategyType;
 
+    // todo 资源操作类型应该是一个集合，可使用 List<OperateType> 转为int类型存储。需编写对应的转换方法
     @Enumerated(EnumType.STRING)
     private OperateType operateType;
 
@@ -41,7 +42,7 @@ public class ResourceAreaEntity extends BaseEntity {
     private StrategyEntity strategy;
 
 
-    public static enum  StrategyType {
+    public enum  StrategyType {
         /**
          * 通过 api 的分类进行授权
          */

@@ -69,6 +69,7 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
                 throw new ServiceException(ExceptionEnum.PARAMETER_ERROR);
         }
 
+        // todo resourceArea 中的 OperateType 应该是一个集合，或者对应的int类型；client中 OperateType 是单个接口的操作方式，是单个enum
         return Objects.equals(resourceArea.getOperateType(), config.getOperate())
                 && Objects.equals(resourceArea.getResource(), resource);
     }
