@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
  */
 public enum ExceptionEnum implements ExceptionSpecification {
     PARAMETER_ERROR(HttpStatus.BAD_REQUEST, "E10002", "parameter error."),
+
+    RESOURCE_NOT_FIND(HttpStatus.BAD_REQUEST, "E10003", "resource not find."),
     ;
 
     private final HttpStatus status;

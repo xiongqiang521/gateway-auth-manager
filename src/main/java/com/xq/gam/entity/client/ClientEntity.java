@@ -1,5 +1,6 @@
 package com.xq.gam.entity.client;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xq.gam.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,17 +40,7 @@ public class ClientEntity extends BaseEntity {
 
     @OneToMany(targetEntity = ClientApiEntity.class, mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonIgnore
     private List<ClientApiEntity> apiList;
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    public boolean equals(ClientEntity other) {
-        return this.getClientId().equals(other.getClientId()) &&
-                this.getHost().equals(other.getHost()) &&
-                this.getName().equals(other.getName());
-
-    }
 }

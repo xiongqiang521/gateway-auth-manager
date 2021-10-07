@@ -40,16 +40,17 @@ public class GamRouteDefinitionRepository implements RouteDefinitionRepository {
 
     @Override
     public Mono<Void> save(Mono<RouteDefinition> route) {
-        logger.info("save RouteDefinition. RouteDefinition {}", route);
-        return route.map(Convertor::convertRouteDefinitionEntity)
-                .map(r -> routeDefinitionMapper.save(r))
-                .thenEmpty(Mono.empty());
+        route.map(Convertor::convertRouteDefinitionEntity)
+                .map(routeDefinitionMapper::save)
+                .subscribe(r -> logger.info("save RouteDefinition. RouteDefinition {}", r));
+        return Mono.empty();
     }
 
     @Override
     public Mono<Void> delete(Mono<String> routeId) {
         logger.info("delete RouteDefinition. routeId {}", routeId);
-        return routeId.doOnNext(rId -> routeDefinitionMapper.deleteById(rId))
-                .thenEmpty(Mono.empty());
+        routeId.doOnNext(routeDefinitionMapper::deleteById)
+                .subscribe(rId -> logger.info("delete RouteDefinition. routeId {}", rId));
+        return Mono.empty();
     }
 }

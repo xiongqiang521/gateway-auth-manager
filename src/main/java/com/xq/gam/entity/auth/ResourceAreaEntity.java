@@ -27,11 +27,11 @@ public class ResourceAreaEntity extends BaseEntity {
     private StrategyType strategyType;
 
     @Enumerated(EnumType.STRING)
-    // @Convert(converter = OperateTypeConverter.class)
     private OperateType operateType;
 
     /**
      * 如果 OperateType 为 SINGLE_API， resource存放 t_client_api 表中的 path 字段
+     * <p/>
      * 如果 OperateType 为 CATEGORY_API， resource存放 t_client_api 表中的 category 字段
      */
     private String resource;
@@ -42,7 +42,13 @@ public class ResourceAreaEntity extends BaseEntity {
 
 
     public static enum  StrategyType {
+        /**
+         * 通过 api 的分类进行授权
+         */
         CATEGORY_API,
+        /**
+         * 通过单个具体的 api 进行授权
+         */
         SINGLE_API,
         ;
     }

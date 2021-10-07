@@ -1,0 +1,25 @@
+###
+GET http://localhost:8080/actuator/gateway/routes
+
+###
+POST http://localhost:8080/actuator/gateway/refresh
+
+###
+POST http://localhost:8080/actuator/gateway/routes/aaa
+Content-Type: application/json
+
+{
+  "id": "aaa",
+  "predicates": [
+    {
+      "name": "Path",
+      "args": {
+        "id1": "/s"
+      }
+    }
+  ],
+  "filters": [
+  ],
+  "uri": "https://www.baidu.com",
+  "metadata": {}
+}

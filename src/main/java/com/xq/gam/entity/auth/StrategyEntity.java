@@ -29,5 +29,8 @@ public class StrategyEntity extends BaseEntity {
     @ManyToMany(mappedBy = "strategyList")
     private List<RoleEntity> roleList;
 
+    @OneToMany(mappedBy = "strategy")
+    private List<ResourceAreaEntity> resourceAreaList;
+
 
 }

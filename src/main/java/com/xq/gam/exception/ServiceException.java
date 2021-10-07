@@ -15,6 +15,13 @@ public class ServiceException extends RuntimeException implements ExceptionSpeci
     private final String code;
     private final String message;
 
+    public ServiceException(ExceptionEnum exceptionEnum) {
+        super(exceptionEnum.getMessage());
+        this.httpStatus = exceptionEnum.getHttpStatus();
+        this.code = exceptionEnum.getCode();
+        this.message = exceptionEnum.getMessage();
+    }
+
     public ServiceException(ExceptionSpecification exceptionSpecification) {
         super(exceptionSpecification.getMessage());
         this.httpStatus = exceptionSpecification.getHttpStatus();
